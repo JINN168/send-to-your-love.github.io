@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>reamore</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+        }
+
+        .container {
+            background-color: hsl(300, 91%, 58%);
+            padding: 1rem;
+            border-radius: 10px;
+            width: 500px;
+            position: relative;
+            /* Add this */
+            height: 400px;
+            /* Add a fixed height */
+        }
+
+        .btn {
+            padding: .5rem 2rem;
+            border: none;
+            outline: none;
+            font-weight: bold;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btnPrimary {
+            color: aliceblue;
+            background: hsl(328, 94%, 49%);
+        }
+
+        .btnSecondary {
+            color: aliceblue;
+            background: hsl(310, 83%, 77%);
+            position: absolute;
+            /* Add this */
+            left: 30px;
+            /* Initial position */
+            top: 100px;
+            transition: left 0.1s, top 0.1s, right 0.1s;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="container">
+        <h2 class="text">ស្រឡាញ់ខ្ញុំអត់?</h2>
+        <button class="btn btnPrimary">YES</button>
+        <button class="btn btnSecondary" id="noBtn">NO</button>
+    </section>
+    <script>
+        const btnAgree = document.querySelector(".btnPrimary");
+        const textElement = document.querySelector(".text");
+        const btnNo = document.getElementById("noBtn");
+        const container = document.querySelector('.container');
+
+        btnAgree.addEventListener("click", () => {
+            textElement.innerText = " តោះទៅរៀបការ❤️ ";
+        });
+
+        btnNo.addEventListener("mouseover", () => {
+            const containerRect = container.getBoundingClientRect();
+            const btnRect = btnNo.getBoundingClientRect();
+            const maxLeft = container.clientWidth - btnNo.offsetWidth;
+            const maxTop = container.clientHeight - btnNo.offsetHeight;
+
+
+            const left = Math.random() * maxLeft;
+            const top = Math.random() * maxTop;
+
+            btnNo.style.left = left + "px";
+            btnNo.style.top = top + "px";
+        });
+    </script>
+</body>
+
+</html>
